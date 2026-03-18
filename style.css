@@ -33,3 +33,14 @@ body {
     padding: 15px 32px;
     text-align: center;
 }
+
+.rainBow .checkbox {
+    display: block;
+    width: inherit;
+    height: inherit;
+    border: 3px solid #434343;
+    border-radius: 6px;
+    transition: all 0.375s;
+}
+
+

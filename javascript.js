@@ -1,6 +1,8 @@
 const container = document.getElementById("container");
 const btnNewGrid = document.getElementById("newGrid");
 const btnResetGrid = document.getElementById("reset");
+const rainBow = document.getElementById("myCheck")
+
 
 function createGrid(size){
     container.innerHTML = "";
@@ -11,13 +13,29 @@ function createGrid(size){
             newDiv.classList.add("square");
             newDiv.style.width = squareSize + "px";
             newDiv.style.height = squareSize + "px";
+
             newDiv.addEventListener("mouseover", (event) => {
-                event.target.style.backgroundColor = "black";
+                if (rainBow.checked === true){
+                    event.target.style.backgroundColor = getRandomColor();
+                }
+                else {
+                    event.target.style.backgroundColor = "black";
+                }
             })
             container.appendChild(newDiv);        
         }
     }
 }
+
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
 
 btnNewGrid.addEventListener("click", () => {
     const x = Number(prompt("How many squares ?"));
@@ -34,6 +52,8 @@ btnNewGrid.addEventListener("click", () => {
         createGrid(x);
     })
 })
+
+
 
 
 console.log(container.childNodes.length)
